@@ -1,0 +1,17 @@
+#specify the uplink interface name here
+:local uplink "ether1"
+
+
+:do {
+    :local intStatus [/interface get $uplink disabled]
+    
+    :if ($intStatus = true) do={
+        /interface enable $uplink
+        :log warning ("Uplink was disabled - enabling")
+    } else={
+        :log info ("Uplink already enabled")
+    }
+    
+} on-error={
+    :log error ("Failed to check or enable uplink interface: $uplink")
+}

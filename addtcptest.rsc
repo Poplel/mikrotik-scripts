@@ -1,3 +1,13 @@
+# TO RUN
+# First upload the .rsc file to the mikrotik from the files tab
+# Open a terminal and type /import addtcptest.rsc
+# You should see "Script file loaded and executed successfully"
+# You can also check it loaded correctly by going to System > Scripts > Enviroment
+# If the function is successfully added you can run it in the terminal with this syntax:
+# $tcptest <number of pings> <url to ping> <port to ping>
+# Any field not specified will be filled with the fallback defaults below
+# This just checks for a HTTP 200 OK response from the specified server, any other response will be marked as a failed ping.
+
 :global tcptest do={
     :local count $1;
     :local host $2;

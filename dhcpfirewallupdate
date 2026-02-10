@@ -1,0 +1,11 @@
+:local o "ether1" #set this to the interface the dhcp server is on
+:local c "ISP1-Egress" #name of the firewall rule to change
+:local cur [/ip address get [find interface=$o] address] #current ip on interface
+:set cur [:pick $cur 0 [:find $cur "/"]] #remove cidr block
+:local rule [/ip firewall nat find comment=$c] # find the rule
+:if ([:len $rule] > 0) do={ #check if the rule is real
+    :if ([/ip firewall nat get $rule to-addresses] != $cur) do={ #check if the dhcp address changed
+        /ip firewall nat set $rule to-addresses=$cur #set to new address
+        :log warning ("Updated NAT rule $c to new IP: $cur") #log change
+    }
+}

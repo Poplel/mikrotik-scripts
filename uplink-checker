@@ -1,4 +1,5 @@
 #specify the uplink interface name here
+#just use netwatch for this idk why I made this script
 :local uplink "ether1"
 
 

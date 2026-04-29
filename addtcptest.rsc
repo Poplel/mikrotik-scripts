@@ -1,4 +1,6 @@
 # TO RUN
+
+# THIS WILL NOT WORK CURRENTLY WITH THE DOMAIN, IT IS NOT ONLINE
 # First upload the .rsc file to the mikrotik from the files tab
 # Open a terminal and type /import addtcptest.rsc
 # You should see "Script file loaded and executed successfully"
@@ -14,7 +16,7 @@
     :local port $3;
 
     # Fallback defaults
-    # httptest.pophosting.xyz is hosted by me and just returns http status 200 OK on port 8089, other ports will give a 404
+    # httptest.pophosting.xyz is hosted by me and just returns http status 200 OK on port 8089, other ports will give a 404 THIS IS NOT IN SERVICE CURRENTLY!!!!
 
     :if ([:len $count] = 0) do={ :set count 10 }
     :if ([:len $host] = 0) do={ :set host "httptest.pophosting.xyz" }

@@ -5,7 +5,7 @@
         :local networkGateway [get $i gateway]
         :if ([:len $networkGateway] > 0) do={
             set $i dns-server=$networkGateway
-            :log info ("DNS Set Script: Updated network " . [get $i address] . " to " . $networkGateway)
+            :log info ("Updated network " . [get $i address] . " to " . $networkGateway)
         }
     }
 } on-error={ :log error "DNS set script failed" }
